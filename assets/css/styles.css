@@ -1,0 +1,104 @@
+
+/* special effect with animation */
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s ease; 
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    opacity: 0; /* Start hidden for fade-in effect */
+    animation: fadeIn 0.5s forwards; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header, .homepage-header, .dashboard-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1, .homepage-header h1, .dashboard-header h1 {
+    font-size: 2.5em;
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.header p, .homepage-header p, .dashboard-header p {
+    color: #777;
+    font-size: 1.2em;
+}
+
+.button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s; /* Button hover effects */
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 200px;
+    transition: transform 0.3s; /* Card hover effect */
+}
+
+.stat-card:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #777;
+}
+
+/* Error and success messages */
+.error-message, .success-message {
+    display: none; /* Initially hidden */
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green;
+}
+
+

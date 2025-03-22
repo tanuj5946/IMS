@@ -1,0 +1,26 @@
+<?php
+session_start();
+// $users = [
+//     'admin' => 'password123',
+//     'user1' => 'securepass'
+// ];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+    
+    // Check if the username exists and password matches
+    if (isset($users[$username]) && $users[$username] === $password) {
+        $_SESSION['username'] = $username;
+        header('Location: dashboard.php'); // Redirect to dashboard
+        exit();
+    } else {
+        $_SESSION['error'] = 'Invalid username or password';
+        header('Location: login.php'); // Redirect back to login with error message
+        exit();
+    }
+} else {
+    header('Location: login.php'); // Prevent direct access
+    exit();
+}
+?>
