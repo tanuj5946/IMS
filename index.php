@@ -50,7 +50,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="lgin.php">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+
                 </ul>
             </div>
         </div>
@@ -74,6 +75,7 @@
                     <p>Click below to log in and start managing your inventory.</p>
                     <div class="homepage-buttons">
                         <a href="login.php" class="btn btn-primary animate__animated animate__pulse animate__infinite">Login</a>
+                        <a href="register.php" class="btn btn-primary animate__animated animate__pulse animate__infinite">Register</a>
                     </div>
                 </section>
             </main>
