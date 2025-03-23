@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once __DIR__ . '/includes/db_connect.php';  // Corrected path to db_connect.php
+require_once __DIR__ . '/includes/db_connect.php';  // Ensure this path is correct for your setup
 
 // Redirect if request is not POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header("Location: login.php");
+    header("Location: pages/login.php");
     exit;
 }
 
@@ -14,12 +14,12 @@ $password = trim($_POST['password'] ?? '');
 
 // Check if fields are filled
 if (empty($email) || empty($password)) {
-    header("Location: login.php?error=" . urlencode("Please fill in all fields."));
+    header("Location: pages/login.php?error=" . urlencode("Please fill in all fields."));
     exit;
 }
 
 try {
-    // Prepare and execute query
+    // Prepare and execute query. Make sure your database column name is 'email'
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->execute([$email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -29,19 +29,19 @@ try {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
 
-        // Redirect to dashboard
+        // Redirect to dashboard (adjust path if necessary)
         header("Location: dashboard.php");
         exit;
     } else {
         // Login failed
-        header("Location: login.php?error=" . urlencode("Invalid email or password."));
+        header("Location: pages/login.php?error=" . urlencode("Invalid email or password."));
         exit;
     }
 
 } catch (PDOException $e) {
     // Log error if needed
     error_log("Database error during login: " . $e->getMessage());
-    header("Location: login.php?error=" . urlencode("Something went wrong. Please try again later."));
+    header("Location: pages/login.php?error=" . urlencode("Something went wrong. Please try again later."));
     exit;
 }
 ?>
