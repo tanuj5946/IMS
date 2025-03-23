@@ -1,6 +1,6 @@
 <?php
 // forgot-password.php
-require_once __DIR__ . '/includes/db_connect.php'; // Adjust path as needed
+require_once __DIR__ . '../includes/db_connect.php'; // Adjust path as needed
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
