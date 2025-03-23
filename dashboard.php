@@ -1,11 +1,24 @@
+<?php
+session_start();
+
+// Include header from the same directory level
+// include 'includes/header.php';
+
+// Check if the user is logged in; if not, redirect to the login page
+if (!isset($_SESSION['user_id'])) {
+    header("Location: pages/login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M K Kirana Store - Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="/assets/css/dashboard.css">
-    <script defer src="/assets/scripts/dashboard.js"></script> 
+    <!-- Assuming dashboard.css is in lms-inventory/assets/css/ -->
+    <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
+    <script defer src="assets/scripts/dashboard.js"></script>
 </head>
 <body>
     <div class="dashboard-container">
@@ -31,14 +44,12 @@
             <section class="dashboard-actions">
                 <h2>Quick Actions</h2>
                 <div class="dashboard-buttons">
-                    <!-- <a href="manage-inventory.html" class="button">Manage Inventory</a>
-                    <a href="view-reports.html" class="button">View Reports</a> -->
-                    <a href="/index.php" class="button">Logout</a>
+                    <a href="index.php" class="button">Logout</a>
                 </div>
             </section>
         </main>
         <footer class="dashboard-footer">
-            <p>&copy; 2023 M K Kirana Store. All rights reserved.</p>
+            <p>&copy; <?php echo date('Y'); ?> M K Kirana Store. All rights reserved.</p>
         </footer>
     </div>
 </body>
