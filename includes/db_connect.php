@@ -8,7 +8,7 @@ $pass = "";
 $db = "mk_kirana_store";
 $charset = 'utf8mb4';
 
-$dsn = "mysql:host={$host};port=3306;dbname={$db};charset={$charset}";
+$dsn = "mysql:host={$host};port=3307;dbname={$db};charset={$charset}";
 
 // $dsn = "mysql:host={$host};dbname={$db};charset={$charset}";
 // Uncomment and adjust the following line if you need a custom port, e.g., 3307
