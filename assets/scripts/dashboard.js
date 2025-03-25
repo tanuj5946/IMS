@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('sales-today').textContent = salesToday;
 
     // Add click event to buttons for interactivity
-    const buttons = document.querySelectorAll('.button');
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            alert(`You clicked on ${this.textContent}`);
-        });
-    });
+    // const buttons = document.querySelectorAll('.button');
+    // buttons.forEach(button => {
+    //     button.addEventListener('click', function() {
+    //         alert(`You clicked on ${this.textContent}`);
+    //     });
+    // });
 });

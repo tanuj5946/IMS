@@ -44,7 +44,7 @@ if (!isset($_SESSION['user_id'])) {
             <section class="dashboard-actions">
                 <h2>Quick Actions</h2>
                 <div class="dashboard-buttons">
-                    <a href="index.php" class="button">Logout</a>
+                    <a href="pages/logout.php" class="button">Logout</a>
                 </div>
             </section>
         </main>
