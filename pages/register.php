@@ -17,6 +17,9 @@ include '../includes/header.php';
             </div>
             <button type="submit" class="btn btn-success w-100">Register</button>
         </form>
+        <div class="text-center mt-3">
+            <p>Already have an account? <a href="login.php">Log in here</a></p>
+        </div>
     </div>
 </div>
 <?php include '../includes/footer.php'; ?>
