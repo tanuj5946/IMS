@@ -38,8 +38,10 @@ if (empty($token)) {
                     // 5) Delete the used token to prevent reuse
                     $stmt = $pdo->prepare("DELETE FROM password_resets WHERE email = ?");
                     $stmt->execute([$reset['email']]);
+                    $_SESSION['message'] = 'Your password has been reset successfully!';
+                    header('Location: reset-message.php');
 
-                    echo "<p>Password has been reset successfully. <a href='login.php'>Login here</a></p>";
+                    // echo "<p>Password has been reset successfully. <a href='login.php'>Login here</a></p>";
                     exit;
                 }
             }
