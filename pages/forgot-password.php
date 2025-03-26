@@ -120,12 +120,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (!empty($error)): ?>
             <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
-        <form action="" method="POST" class="mt-4">
+        <form action="send-otp.php" method="POST" class="mt-4">
             <div class="mb-3">
                 <label for="email" class="form-label">Enter your email address:</label>
                 <input type="email" name="email" id="email" class="form-control" required />
             </div>
-            <button type="submit" class="btn btn-primary">Send Reset Link</button>
+            <button type="submit" class="btn btn-primary">Send OTP</button>
         </form>
         <div class="mt-3">
             <a href="login.php">Back to Login</a>
