@@ -14,16 +14,25 @@
 
 </head>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.querySelector("form");
-        const overlay = document.createElement("div");
-        overlay.className = "form-overlay";
-        overlay.innerHTML = `<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>`;
-        form.parentNode.appendChild(overlay);
+    document.addEventListener("DOMContentLoaded", function () {
+        let errorContainer = document.getElementById("error-container");
+        let progressBar = document.getElementById("error-progress");
 
-        form.addEventListener("submit", function () {
-            overlay.style.display = "flex";
-        });
+        if (errorContainer && progressBar) {
+            let duration = 3000; // 3 seconds
+            let interval = 50; // Update every 50ms
+            let width = 100; // Initial width of progress bar
+
+            let timer = setInterval(function () {
+                width -= (100 / (duration / interval)); // Decrease width gradually
+                progressBar.style.width = width + "%"; 
+
+                if (width <= 0) {
+                    clearInterval(timer);
+                    errorContainer.style.display = "none"; // Hide the error message
+                }
+            }, interval);
+        }
     });
 </script>
 
@@ -37,15 +46,26 @@
             </header>
 
             <main>
-                <?php
-                // Display error message if set in session or via GET parameter
-                if (isset($_SESSION['error'])) {
-                    echo '<div class="alert alert-danger text-center">' . $_SESSION['error'] . '</div>';
-                    unset($_SESSION['error']);
-                } elseif (isset($_GET['error'])) {
-                    echo '<div class="alert alert-danger text-center">' . htmlspecialchars($_GET['error']) . '</div>';
-                }
-                ?>
+            <?php
+// Display error message if set in session or via GET parameter
+            if (isset($_SESSION['error'])) {
+                echo '<div id="error-container" class="alert alert-danger text-center">
+                        <span id="error-message">' . $_SESSION['error'] . '</span>
+                        <div class="progress mt-2">
+                            <div id="error-progress" class="progress-bar bg-danger" role="progressbar" style="width: 100%;"></div>
+                        </div>
+                    </div>';
+                unset($_SESSION['error']);
+            } elseif (isset($_GET['error'])) {
+                echo '<div id="error-container" class="alert alert-danger text-center">
+                        <span id="error-message">' . htmlspecialchars($_GET['error']) . '</span>
+                        <div class="progress mt-2">
+                            <div id="error-progress" class="progress-bar bg-danger" role="progressbar" style="width: 100%;"></div>
+                        </div>
+                    </div>';
+            }
+            ?>
+
 
                 <form action="../authenticate.php" method="POST" class="text-center">
                     <div class="mb-3">
@@ -93,6 +113,16 @@
                 button.textContent = 'Show';
             }
         }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let errorMessage = document.querySelector(".alert-danger"); // Select the error message
+
+            if (errorMessage) {
+                setTimeout(function () {
+                    errorMessage.style.display = "none"; // Hide the error message
+                }, 3000); // 3 seconds delay
+            }
+        });
     </script>
 </body>
 
