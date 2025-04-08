@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../includes/db_connect.php';  // This file defines $pdo
+include __DIR__ . '/../includes/db_connect.php';
 
 // Retrieve POST data
 $email = trim($_POST['email'] ?? '');
@@ -23,8 +23,12 @@ if ($email && $password) {
 
         if ($success) {
             $_SESSION['success'] = "Registration successful!";
+            header("Location: /login"); // Redirect to login after successful registration
+            exit();
         } else {
             $_SESSION['error'] = "Registration failed. Please try again.";
+            header("Location: /register"); // Redirect back to registration page on failure
+            exit();
         }
 
     } catch (PDOException $e) {
@@ -34,11 +38,12 @@ if ($email && $password) {
         } else {
             $_SESSION['error'] = "Database error: " . $e->getMessage();
         }
+        header("Location: /register"); // Redirect back to registration page on error
+        exit();
     }
 } else {
     $_SESSION['error'] = "Please fill out all fields!";
+    header("Location: /register"); // Redirect back to registration page if fields are empty
+    exit();
 }
-
-// Redirect to the login page after processing
-header("Location: login.php");
-exit();
+?>

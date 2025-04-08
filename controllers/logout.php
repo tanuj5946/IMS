@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 // Unset all session variables and destroy session
 $_SESSION = [];
@@ -13,8 +13,6 @@ if (ini_get("session.use_cookies")) {
         $params["secure"], $params["httponly"]
     );
 }
-
-// ⚠️ Do NOT use header() redirect here — let HTML + JS handle it
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +22,7 @@ if (ini_get("session.use_cookies")) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: url('../assets/images/background.png') no-repeat center center fixed;
+            background: url('/assets/images/background.png') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             justify-content: center;
@@ -34,7 +32,7 @@ if (ini_get("session.use_cookies")) {
         }
 
         .logout-message {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             padding: 40px;
             border-radius: 10px;
             text-align: center;
@@ -55,8 +53,8 @@ if (ini_get("session.use_cookies")) {
     </style>
     <script>
         // Redirect to login after 3 seconds
-        setTimeout(function() {
-            window.location.href = 'login.php'; // adjust if needed
+        setTimeout(() => {
+            window.location.href = '/login'; // use clean route
         }, 3000);
     </script>
 </head>

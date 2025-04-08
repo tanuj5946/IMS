@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 require_once '../includes/db_connect.php';
 
 $error = '';
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($match) {
         $_SESSION['otp_verified'] = true;
-        header("Location: reset-password.php");
+        header("Location: /reset-password");
         exit;
     } else {
         $error = "Invalid or expired OTP.";
@@ -27,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Verify OTP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         body {
-            background: url('../assets/images/background.png') no-repeat center center fixed;
+            background: url('/assets/images/background.png') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             margin: 0;
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="alert alert-danger text-center"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
 
-    <form method="POST" action="verify-otp.php" onsubmit="combineOTP()">
+    <form method="POST" action="/verify-otp" onsubmit="combineOTP()">
         <div class="otp-group">
             <?php for ($i = 1; $i <= 6; $i++): ?>
                 <input type="text" class="form-control otp-input" maxlength="1" pattern="\d" required oninput="moveNext(this, <?= $i ?>)" id="otp<?= $i ?>">

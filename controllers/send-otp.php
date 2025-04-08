@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once '../includes/db_connect.php';
-require_once '../includes/mailer.php';
+require_once '/../includes/db_connect.php';
+require_once '/../includes/mailer.php';
 
 $email = $_POST['email'];
 $otp = rand(100000, 999999);
@@ -20,12 +20,12 @@ if ($user) {
 
     if (sendEmail($email, $subject, $body)) {
         $_SESSION['reset_email'] = $email;
-        header("Location: verify-otp.php");
+        header("Location: /verify-otp");
         exit;
     } else {
-        echo "Failed to send OTP.";
+        echo "Failed to send OTP."; // Consider better error handling
     }
 } else {
-    echo "Email not found.";
+    echo "Email not found."; // Consider better error handling
 }
 ?>

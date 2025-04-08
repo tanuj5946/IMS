@@ -28,9 +28,9 @@ try {
 
     $pdo->exec("SET time_zone = '+05:30'");
 
-    if (DB_DEBUG === true && basename($_SERVER['PHP_SELF']) === 'index.php') {
-        echo "✅ Database connection successful!";
-    }
+    // if (DB_DEBUG === true && basename($_SERVER['PHP_SELF']) === 'index.php') {
+    //     echo "✅ Database connection successful!";
+    // }
 } catch (PDOException $e) {
     die("❌ Database connection error: " . $e->getMessage());
 }

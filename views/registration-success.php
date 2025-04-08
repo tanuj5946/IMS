@@ -13,12 +13,12 @@ include '../includes/header.php';
             <p class="mt-2" style="font-size: 1.1rem;">
                 <?= $_SESSION['message']; unset($_SESSION['message']); ?>
             </p>
-            <a href="login.php" class="btn btn-success mt-3">Go to Login</a>
+            <a href="/login" class="btn btn-success mt-3">Go to Login</a>
         </div>
     <?php else: ?>
         <div class="translucent-box text-center">
             <h4>No message to show.</h4>
-            <a href="login.php" class="btn btn-secondary mt-3">Back to Login</a>
+            <a href="/login" class="btn btn-secondary mt-3">Back to Login</a>
         </div>
     <?php endif; ?>
 

@@ -1,0 +1,153 @@
+/* ======= Global Styles ======= */
+body {
+    background: url('../images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    width: 100%;
+}
+
+/* ======= Form Box ======= */
+.translucent-box {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* ======= Input Animations ======= */
+input:focus {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.4);
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+}
+
+button.btn {
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    transition: 0.3s ease;
+}
+
+button.btn:hover {
+    background-color: #218838 !important;
+    box-shadow: 0 0 15px rgba(40, 167, 69, 0.6);
+    transform: translateY(-2px);
+}
+
+/* ======= Link Hover Effect ======= */
+a:hover {
+    color: #28a745;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+/* ======= Loading Spinner Overlay ======= */
+.form-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: #28a745;
+}
+
+/* ======= Dark Mode Styles ======= */
+body.dark-mode {
+    color: #f1f1f1; /* Light text */
+    background: url('../images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+/* Dark overlay in dark mode */
+body.dark-mode::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Dark mode form box */
+.dark-mode .translucent-box {
+    background: rgba(40, 40, 40, 0.9);
+    color: #ffffff;
+    border: 1px solid #444;
+}
+
+/* Dark mode buttons */
+.dark-mode .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.dark-mode .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Dark mode links */
+.dark-mode a {
+    color: #90caf9;
+}
+
+/* Dark mode alerts */
+.dark-mode .alert-danger {
+    background-color: #8b0000;
+    color: white;
+}
+
+/* ======= Dark Mode Toggle Button ======= */
+.dark-mode-toggle {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+#dark-mode-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 8px;
+    transition: transform 0.2s ease;
+}
+
+#dark-mode-btn:hover {
+    transform: scale(1.1);
+}
